@@ -9,7 +9,7 @@
   >
     <div class="yjuzhong-1 apptitlelr_box">
       <img src="@/assets/logomini.png" style="width: 50px;height: 45px" />
-      <div class="BUTTON pl-2">聚云物联</div>
+      <div class="BUTTON pl-2">MAXWIN</div>
     </div>
     <v-spacer></v-spacer>
     <div class="font-weight-bold apptitle">运营管理</div>
