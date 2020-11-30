@@ -335,6 +335,9 @@ export default {
         duration: 2000,
         message: '删除图片，id:' + id
       });
+      this.yun_imgs = this.yun_imgs.filter(item => {
+            return item.id !== id
+          })
     },
     set_company(company) {
       this.searchData.company_name = company.name;
