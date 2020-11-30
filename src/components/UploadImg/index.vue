@@ -92,7 +92,6 @@
 </template>
 
 <script>
-import { delEmp_illegal_img } from "@/api/emp_illegalmng.js";
 import axios from "axios";
 
 export default {
