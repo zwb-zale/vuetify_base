@@ -1,6 +1,7 @@
 <template>
   <v-menu
       :value="showBox"
+      :close-on-click="value?type!=='range'||value.length===2:true"
       :close-on-content-click="false"
       :nudge-right="40"
       transition="scale-transition"
@@ -8,59 +9,44 @@
       min-width="290px"
   >
     <template v-slot:activator="{ on, attrs }">
-      <v-row v-if="type==='likeEL'">
-        <v-col cols="4" class="pa-0">
-          <form-lable :text="label" :required="required"/>
-        </v-col>
-        <v-col :cols="cols" class="pa-0">
-          <v-text-field
-              prepend-inner-icon="date_range"
-              single-line
-              outlined
-              :hide-details="hide_details"
-              :dense="dense"
-              @click="showBox = true"
-              @click:clear="updateDate(null)"
-              clearable
-              :value="formateDate(value)"
-              readonly
-              :required="required"
-              v-bind="attrs"
-              v-on="on"
-          ></v-text-field>
-        </v-col>
-      </v-row>
-      <v-row v-else-if="type==='range'">
-        <v-col :cols="cols" class="pa-0">
-          <v-text-field
-              prepend-inner-icon="date_range"
-              :label="label"
-              :hide-details="hide_details"
-              :dense="dense"
-              flat
-              :height="28"
-              @click:clear="updateDate(null)"
-              :value="formateDateView(value)"
-              readonly
-              :required="required"
-              v-bind="attrs"
-              v-on="on"
-          ></v-text-field>
-        </v-col>
-      </v-row>
+      <v-text-field
+          v-if="type==='range'"
+          :value="formateDateView(value)"
+          :single-line="outlined"
+          :outlined="outlined"
+          :label="label"
+          :hide-details="hide_details"
+          :dense="dense"
+          :height="28"
+          :required="required"
+          :rules="required ? inputRules : []"
+          flat
+          readonly
+          clearable
+          prepend-inner-icon="date_range"
+          @click="showBox = true"
+          @click:clear="updateDate(null)"
+          v-bind="attrs"
+          v-on="on"
+      ></v-text-field>
       <v-text-field
           v-else
-          prepend-inner-icon="date_range"
+          :value="formateDate(value)"
+          :single-line="outlined"
+          :outlined="outlined"
+          :label="label"
           :hide-details="hide_details"
           :filled="filled"
           :dense="dense"
+          :height="28"
+          :required="required"
+          :rules="required ? inputRules : []"
+          flat
+          readonly
+          clearable
+          prepend-inner-icon="date_range"
           @click="showBox = true"
           @click:clear="updateDate(null)"
-          clearable
-          :value="formateDate(value)"
-          :label="label"
-          readonly
-          :required="required"
           v-bind="attrs"
           v-on="on"
       ></v-text-field>
@@ -91,6 +77,10 @@ export default {
       type: Number | String,
       default: 8
     },
+    outlined: {
+      type: Boolean,
+      default: false
+    },
     required: {
       type: Boolean,
       default: false
@@ -109,45 +99,47 @@ export default {
       type: Boolean,
       default: false
     },
-    value: [String,Array],
+    value: [String, Array],
     label: {
       type: String,
       default: ""
     },
-    start_placeholder: {
-      type: String,
-      default: "开始日期"
-    },
-    end_placeholder: {
-      type: String,
-      default: "结束日期"
-    },
     format: {
       type: String,
       default: "yyyy-MM-dd"
-    }
+    },
+    inputRules: {
+      type: Array,
+      default: () => {
+        return [v => !!v || v === 0 || "此栏位是必须的"];
+      }
+    },
   },
   methods: {
     updateDate(date) {
-      console.log(date)
-      if(this.type==='range'){
-        if(date.length===2){
-          this.$emit("input", date);
-          this.showBox = false;
+      if (this.type === 'range') {
+        if(date){
+          if (date.length === 2) {
+            this.showBox = false
+          }
         }
-      }else{
-        this.$emit("input", date);
-        this.showBox = false;
+      } else {
+        this.showBox = false
       }
+      this.$emit("input", date);
 
     },
-    formateDateView(value){
-      return value.join(' ~ ')
+    formateDateView(value) {
+      if(value){
+        return value.join(' ~ ')
+      }else{
+        return null
+      }
     },
     formateDate(value) {
-      if(this.type==='range'){
+      if (this.type === 'range') {
         return value
-      }else{
+      } else {
         if (value) {
           return new Date(value).format(this.format);
         } else {

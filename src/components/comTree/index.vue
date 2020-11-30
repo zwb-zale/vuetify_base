@@ -34,7 +34,7 @@
           item-children="companys"
           dense
           activatable
-          :open-all="show_tree"
+          :open-all="showAll&&show_tree"
           :items="companys_node"
           :search="filterText"
           :filter="filter"
@@ -72,6 +72,10 @@ import { getCompanyTree } from "@/api/company-tree.js";
 export default {
   name: "index",
   props: {
+    showAll: {
+      type: Boolean,
+      default: true
+    },
     visible: {
       type: Boolean,
       default: false
