@@ -13,21 +13,6 @@
         </v-col>
 
         <v-col cols="12" md="4">
-          <v-card height="56" class="mb-6 pa-2">
-            <v-row no-gutters>
-              <v-col cols="12" md="4">
-                <v-img height="40" width="40" src="@/assets/sjkb.png" />
-              </v-col>
-              <v-col cols="12" md="4" class="d-flex align-center">
-                展示
-              </v-col>
-              <v-col cols="12" md="4" class="d-flex align-center justify-end">
-                <v-btn depressed small color="primary">
-                  进入
-                </v-btn>
-              </v-col>
-            </v-row>
-          </v-card>
           <v-skeleton-loader
             v-bind="attrs"
             type="table-heading, list-item-two-line, image, table-tfoot"

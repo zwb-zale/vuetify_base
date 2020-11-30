@@ -154,6 +154,12 @@
                     text="生日"
                     v-model="datas.birthday"
                 />
+                <form-datetime
+                required
+                textWidth="150px"
+                label="2020-01-01 00:00:00"
+                text="时间"
+                v-model="datas.date_time"/>
                 <form-select
                     type="combox"
                     textWidth="150px"
