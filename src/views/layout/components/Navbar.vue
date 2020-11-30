@@ -1,74 +1,75 @@
 <template>
   <v-navigation-drawer
-     permanent
-     clipped
-     app
-     color="rgba(51, 58, 78,0)"
+    permanent
+    clipped
+    app
+    color="rgb(51, 58, 78)"
+    dark
+    :width="190"
   >
     <v-list expand>
-
-      <template v-for="(item, i) in computedItem">
+      <template v-for="(item, i) in permission_routers">
         <item-group
+          v-if="item.children && !item.haveson"
           :key="`group-${i}`"
           :item="item"
-          :showall="item.alwaysShow"
         ></item-group>
+        <base-item
+          v-else
+          :haveson="false"
+          :key="`item-${i}`"
+          :item="item.children[0]"
+        ></base-item>
       </template>
     </v-list>
-
   </v-navigation-drawer>
 </template>
 
 <script>
-import ItemGroup from '@/components/base/ItemGroup'
-
+import { mapGetters } from "vuex";
+import ItemGroup from "@/components/base/ItemGroup";
+import BaseItem from "@/components/base/Item";
 export default {
   components: {
-    ItemGroup
+    ItemGroup,
+    BaseItem
   },
-  computed:{
-    computedItem(){
-      console.log(this.$router.options.routes)
-      return this.$router.options.routes
-    }
+  computed: {
+    ...mapGetters(["permission_routers"])
   },
-  data(){
+  data() {
     return {
-      computedItems:[
+      computedItems: [
         {
-          icon: 'mdi-view-dashboard',
-          title: 'dashboard',
-          show:true,
-          children:[
+          icon: "mdi-view-dashboard",
+          title: "dashboard",
+          show: true,
+          children: [
             {
-              title: 'testPage',
-              to: 'test-manage/testPage',
+              title: "testPage",
+              to: "test-manage/testPage"
             }
           ]
         },
         {
-          icon: 'mdi-account',
-          title: 'user',
-          children:[
+          icon: "mdi-account",
+          title: "user",
+          children: [
             {
-              title: 'testTwo',
-              to: 'data-manage/testTwo',
+              title: "testTwo",
+              to: "data-manage/testTwo"
             },
             {
-              title: 'testThree',
-              to: 'data-manage/testthree',
+              title: "testThree",
+              to: "data-manage/testthree"
             }
-          ],
-        },
+          ]
+        }
       ]
-    }
+    };
   },
-  methods: {
-
-  }
-}
+  methods: {}
+};
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

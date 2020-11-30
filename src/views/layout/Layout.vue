@@ -1,29 +1,27 @@
 <template>
-  <v-app id="inspire">
-    <v-app-bar app clipped-left :elevation="0">
-      Title
-    </v-app-bar>
-    <Navbar/>
-    <main-app/>
-
+  <v-app id="app">
+    <app-title />
+    <Navbar />
+    <main-app />
   </v-app>
 </template>
 
 <script>
-import Navbar from './components/Navbar'
-import mainApp from './components/mainApp'
+import appTitle from "./components/appTitle";
+import Navbar from "./components/Navbar";
+import mainApp from "./components/mainApp";
+
 export default {
-  name: 'Layout',
+  name: "Layout",
 
   components: {
-    Navbar,mainApp
+    appTitle,
+    Navbar,
+    mainApp
   },
-  methods: {
 
-  }
-}
+  methods: {}
+};
 </script>
 
-<style>
-
-</style>
+<style></style>

@@ -1,0 +1,18 @@
+<template>
+  <div class="appBox">
+
+  </div>
+</template>
+
+<script>
+
+export default {
+  name: "Employee"
+};
+</script>
+
+<style scoped>
+/*div>>>.v-footer{*/
+/*  bottom: 0;*/
+/*}*/
+</style>

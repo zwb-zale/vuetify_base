@@ -1,0 +1,121 @@
+.apptitle{
+  letter-spacing: 6px;font-size: 1.5rem;
+}
+.apptitlelr_box{
+  width: 200px;
+  height: 100%
+}
+.appBox{
+  position: absolute;
+  top: 32px;
+  width: 100%;
+  height: calc(100vh - 82px);
+  padding: 12px;
+  overflow: auto;
+}
+.editBox{
+  position: absolute;
+  z-index: 0;
+  top: 0;
+  background-color: #ffffff;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+.main_edit_Box{
+  background-color: #ffffff;
+  height: 100%;
+  position: relative
+}
+.editFormBox{
+  height: calc(100% - 90px);
+  overflow-y:auto
+}
+.xyjuzhong{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.yjuzhong-1{
+  display: flex;
+  align-items: center;
+}
+.yjuzhong-2{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.yjuzhong-3{
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.yjuzhong-4{
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+  }
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, .7);
+  }
+::-webkit-scrollbar-track {
+  background: #ffffff;
+
+}
+.smallIcon{
+  font-size: 18px !important;
+}
+.smalltxt{
+  font-size: 12px !important;
+}
+.v-pagination__item{
+  box-shadow:none;
+}
+.v-pagination__navigation{
+  box-shadow:none;
+}
+.relative{
+  position: relative !important;
+}
+.absolute{
+  position: absolute !important;
+}
+
+.inputStar{
+  color: red;
+  font-size: 3px;
+  margin-right: 4px
+}
+.noselect {
+-webkit-touch-callout: none; /* iOS Safari */
+
+-webkit-user-select: none; /* Chrome/Safari/Opera */
+
+-khtml-user-select: none; /* Konqueror */
+
+-moz-user-select: none; /* Firefox */
+
+-ms-user-select: none; /* Internet Explorer/Edge */
+
+user-select: none; /* Non-prefixed version, currently
+
+not supported by any browser */
+
+}
+div>>>.v-pagination__item{
+  box-shadow:none;
+}
+div>>>.v-pagination__navigation{
+  box-shadow:none;
+}
+.justify-between{
+  justify-content: space-between !important;
+}
+.lableColor{
+  color: #9da5b0 !important;
+}

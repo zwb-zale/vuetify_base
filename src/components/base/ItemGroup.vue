@@ -1,57 +1,76 @@
 <template>
-  <v-list-group
-    :value="showall"
-    :prepend-icon="item.meta.icon"
-    append-icon="mdi-menu-down"
-    color="indigo"
-  >
+  <v-list-group v-model="showSon" color="#ffffff">
     <template v-slot:activator>
-
-      <v-list-item-content>
-        <v-list-item-title v-text="item.meta.title" />
-      </v-list-item-content>
+      <v-list-item>
+        <v-list-item-icon class="mr-4">
+          <v-icon class="smallIcon" v-text="item.meta.icon" />
+        </v-list-item-icon>
+        <v-list-item-content>
+          <v-list-item-title
+            class="text-button"
+            style="color: #ffffff"
+            v-text="generateTitle(item.meta.title)"
+          />
+        </v-list-item-content>
+      </v-list-item>
     </template>
 
     <template v-for="(child, i) in item.children">
-
-      <base-item
-        :base_path="item.path"
-        :key="`item-${i}`"
-        :item="child"
-        text
-      />
+      <base-item :base_path="item.path" :key="`item-${i}`" :item="child" text />
     </template>
   </v-list-group>
 </template>
 
 <script>
-import BaseItem from '@/components/base/Item'
-  export default {
-    name: 'ItemGroup',
-    components: {
+import { generateTitle } from "@/utils/i18n";
+import BaseItem from "@/components/base/Item";
+export default {
+  name: "ItemGroup",
+  components: {
     BaseItem
   },
+  data() {
+    return {
+      showSon: false
+    };
+  },
 
-    props: {
-      showall:{
-        type:Boolean,
-        default:false
-      },
-      item: {
-        type: Object,
-      },
+  props: {
+    showall: {
+      //废弃
+      type: Boolean,
+      default: false
     },
+    item: {
+      type: Object,
+      default: () => ({
+        meta: {},
+        path: "",
+        children: []
+      })
+    }
+  },
+  watch: {
+    $route() {
+      let inClud = this.item.children.some(item => {
+        if (item.name === this.$route.name) {
+          return true;
+        }
+      });
+      if (inClud) {
+        this.showSon = inClud;
+      }
+    }
+  },
 
-    computed: {
-
-    },
-
-    methods: {
-
-    },
+  methods: {
+    generateTitle
   }
+};
 </script>
 
-<style>
-
+<style scoped>
+div >>> .v-list-item {
+  padding: 0 6px;
+}
 </style>
