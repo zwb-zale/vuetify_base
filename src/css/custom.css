@@ -1,3 +1,14 @@
+html {
+  overflow-y: auto !important;
+}
+.v-data-table > .v-data-table__wrapper > table > tbody > tr > th,
+.v-data-table > .v-data-table__wrapper > table > thead > tr > th,
+.v-data-table > .v-data-table__wrapper > table > tfoot > tr > th {
+   font-size: 0.875rem !important;
+}
+.v-list-group .v-list-group__header .v-list-item__icon.v-list-group__header__append-icon{
+  min-width: 38px !important;
+}
 .apptitle{
   letter-spacing: 6px;font-size: 1.5rem;
 }

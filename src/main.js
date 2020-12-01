@@ -5,13 +5,11 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import i18n from "./lang";
+import "./utils/permission";
 import Message from "./components/Message/index.js";
 import "@/css/custom.css";
 import vuetify from "./plugins/vuetify";
-import { activeRingChart } from "@jiaminghi/data-view";
-Vue.use(activeRingChart);
-import i18n from "./lang";
-import "./utils/permission";
 Vue.config.productionTip = false;
 Vue.prototype.$message = Message;
 const vm = new Vue({

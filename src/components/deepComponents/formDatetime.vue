@@ -61,6 +61,7 @@
                 v-bind="timePickerProps"
                 format="24hr"
                 full-width
+                use-seconds
             ></v-time-picker>
           </v-tab-item>
         </v-tabs>
@@ -126,7 +127,7 @@ export default {
     },
     timeFormat: {
       type: String,
-      default: 'HH:mm'
+      default: DEFAULT_TIME_FORMAT
     },
     clearText: {
       type: String,
