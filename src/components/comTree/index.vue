@@ -23,7 +23,6 @@
           solo-inverted
           hide-details
           clearable
-          clear-icon="mdi-close-circle-outline"
         ></v-text-field>
       </v-sheet>
       <v-card-text class="px-3">

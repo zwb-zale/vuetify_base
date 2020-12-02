@@ -60,7 +60,7 @@
                 color="primary"
             >
               <v-icon dark>
-                mdi-minus
+                search
               </v-icon>
             </v-btn>
 
@@ -72,7 +72,7 @@
                 color="pink"
             >
               <v-icon dark>
-                mdi-heart
+                search
               </v-icon>
             </v-btn>
 
@@ -83,7 +83,7 @@
                 color="indigo"
             >
               <v-icon dark>
-                mdi-plus
+                search
               </v-icon>
             </v-btn>
 
@@ -94,7 +94,7 @@
                 color="teal"
             >
               <v-icon dark>
-                mdi-format-list-bulleted-square
+                search
               </v-icon>
             </v-btn>
 
@@ -106,7 +106,7 @@
                 color="cyan"
             >
               <v-icon dark>
-                mdi-pencil
+                search
               </v-icon>
             </v-btn>
 
@@ -118,7 +118,7 @@
                 color="purple"
             >
               <v-icon dark>
-                mdi-android
+                search
               </v-icon>
             </v-btn>
           </div>

@@ -1,34 +1,63 @@
 <template>
   <v-toolbar absolute dense height="32" width="100%" :elevation="2">
+
+    <v-menu
+        v-model="showMenu"
+        :position-x="menuX"
+        :position-y="menuY"
+        absolute
+        offset-y
+        @contextmenu.prevent.native=""
+    >
+      <v-list dense class="py-0 flex-column">
+        <div v-for="(item, index) in menus">
+          <v-btn
+              block
+              :elevation="0"
+              @contextmenu.prevent.native="actionMenu(item.type)"
+              @click="actionMenu(item.type)"
+              tile
+              class="justify-start pl-1 pr-2 text-caption"
+          >
+            <v-icon small left class="ml-1">
+              {{ item.icon }}
+            </v-icon>
+            {{ item.title }}
+          </v-btn>
+        </div>
+      </v-list>
+    </v-menu>
     <div ref="scrollContainer" class="scroll-list">
       <v-btn
-        @click="
+          @contextmenu.prevent.native="openMenu($event,tag)"
+          @click="
           goTag({ path: tag.path, query: tag.query, fullPath: tag.fullPath })
         "
-        :height="26"
-        :max-width="110"
-        :color="isActive(tag) ? 'success' : '#ffffff'"
-        v-for="(tag, index) in visitedViews"
-        depressed
-        small
-        class="mr-2 px-1"
-        style="border: 1px solid #d8dce5;"
-        :key="index"
+          :height="26"
+          :max-width="110"
+          :color="isActive(tag) ? 'success' : '#ffffff'"
+          v-for="(tag, index) in visitedViews"
+          depressed
+          small
+          class="mr-2 px-1"
+          style="border: 1px solid #d8dce5;"
+          :key="index"
+          :ref="tag.name"
       >
         <v-icon size="12">
-          radio_button_checked
+          {{ tag.meta.icon }}
         </v-icon>
         <div class="smalltxt font-weight-light pl-2">
           {{ generateTitle(tag.title) }}
         </div>
         <v-btn
-          @click.stop="closeSelectedTag(tag)"
-          :elevation="1"
-          fab
-          color="#ffffff"
-          class="ml-1"
-          :height="15"
-          :width="15"
+            @click.stop="closeSelectedTag(tag)"
+            :elevation="1"
+            fab
+            color="#ffffff"
+            class="ml-1"
+            :height="15"
+            :width="15"
         >
           <v-icon size="12">
             close
@@ -40,14 +69,20 @@
 </template>
 
 <script>
-import { generateTitle } from "@/utils/i18n";
+import {generateTitle} from "@/utils/i18n";
+
 export default {
   name: "toolBar",
   data() {
     return {
-      // visible: false,
-      // top: 0,
-      // left: 0,
+      showMenu: false,
+      menuX: 0,
+      menuY: 0,
+      menus: [
+          {type: 0, title: '刷新', icon: 'cached'},
+        {type: 1, title: '关闭', icon: 'close'},
+        {type: 2, title: '关闭其它', icon: 'not_interested'}
+      ],
       selectedTag: {}
     };
   },
@@ -59,7 +94,10 @@ export default {
   watch: {
     $route() {
       this.addViewTags();
-      // this.moveToCurrentTag()
+      this.$nextTick(() => {
+        this.moveToTarget(this.$refs[this.$route.name][0].$el)
+      })
+
     }
     // visible(value) {
     //   if (value) {
@@ -76,6 +114,48 @@ export default {
   },
   methods: {
     generateTitle,
+    actionMenu(type) {
+      let view = this.selectedTag
+      let checkThisrout=view.name===this.$route.name
+      if (type === 1) {
+        if (this.visitedViews.length === 1) {
+          window.location.reload()
+          return false
+        } else {
+          this.$store.dispatch('delView', view).then(({visitedViews}) => {
+            if (this.isActive(view)) {
+              const latestView = visitedViews.slice(-1)[0]
+              if (latestView) {
+                this.$router.push(latestView)
+              } else {
+                this.$router.push('/')
+              }
+            }
+          })
+        }
+      } else if (type === 2) {
+        if(!checkThisrout){
+          this.$router.push(view)
+        }
+        this.$store.dispatch('delOthersViews', view)
+      }
+      this.showMenu=false
+    },
+    openMenu(e, tag) {
+      e.preventDefault()
+      this.selectedTag = tag
+      this.showMenu = false
+      this.menuX = e.clientX
+      this.menuY = e.clientY
+      this.$nextTick(() => {
+        this.showMenu = true
+      })
+    },
+    moveToTarget(currentTag) {
+      currentTag.scrollIntoView({
+        behavior: "smooth",  // 平滑过渡
+      });
+    },
     handleScroll(event) {
       let detail = event.wheelDelta || event.detail;
       let moveForwardStep = -1;
@@ -83,7 +163,7 @@ export default {
       let step = 0;
       step = detail > 0 ? moveForwardStep * 100 : moveBackStep * 100;
       this.$refs.scrollContainer.scrollLeft =
-        this.$refs.scrollContainer.scrollLeft + step;
+          this.$refs.scrollContainer.scrollLeft + step;
     },
     goTag(tag) {
       this.$router.push(tag);
@@ -92,7 +172,7 @@ export default {
       return route.path === this.$route.path;
     },
     addViewTags() {
-      const { name } = this.$route;
+      const {name} = this.$route;
       if (name) {
         this.$store.dispatch("addView", this.$route);
       }
@@ -100,9 +180,10 @@ export default {
     },
     closeSelectedTag(view) {
       if (this.visitedViews.length === 1) {
+        window.location.reload()
         return false;
       } else {
-        this.$store.dispatch("delView", view).then(({ visitedViews }) => {
+        this.$store.dispatch("delView", view).then(({visitedViews}) => {
           if (visitedViews.length === 0) {
             return false;
           }
@@ -136,6 +217,7 @@ export default {
 
 <style scoped>
 .scroll-list {
+  width: 100%;
   white-space: nowrap;
   -webkit-overflow-scrolling: touch;
   overflow-x: auto;
@@ -143,6 +225,7 @@ export default {
   overflow: -moz-scrollbars-none;
   -ms-overflow-style: none;
 }
+
 .scroll-list::-webkit-scrollbar {
   display: none;
 }

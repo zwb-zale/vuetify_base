@@ -1,8 +1,8 @@
 <template>
-  <div style="width:100%;height:650px;">
+  <div class="appBox">
     <iframe
       :src="src"
-      style="width:100%;height:100%;"
+      style="width:100%;height:98%;"
       frameborder="”no”"
       border="”0″"
       marginwidth="”0″"

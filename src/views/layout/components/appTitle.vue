@@ -18,7 +18,7 @@
       <template v-slot:activator="{ on, attrs }">
         <v-btn text dark v-bind="attrs" v-on="on">
           <div class="text-body-2 text-none pl-2">{{ user_inform.uname }}</div>
-          <v-icon>mdi-menu-down</v-icon>
+          <v-icon>arrow_drop_down</v-icon>
         </v-btn>
       </template>
       <div class="xyjuzhong" style="background-color: #ffffff;padding: 4px 0">

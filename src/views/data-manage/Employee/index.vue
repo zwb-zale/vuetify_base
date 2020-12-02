@@ -130,7 +130,7 @@
           @click="editEmpRow(item)"
         >
           <v-icon dark size="15">
-            mdi-pencil
+            camera_alt
           </v-icon>
         </v-btn>
         <v-btn

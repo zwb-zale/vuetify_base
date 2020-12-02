@@ -7,7 +7,7 @@
       <v-col cols="12" md="12" class="yjuzhong-1 py-0">
         <v-file-input
           class="mr-2 mt-0 pt-0"
-          prepend-icon="mdi-camera"
+          prepend-icon="camera_alt"
           :disabled="!add_permition"
           :show-size="showSize"
           :counter="showSize ? limitCount : null"
