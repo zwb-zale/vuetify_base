@@ -78,12 +78,10 @@
 </template>
 
 <script>
-import {format, parse} from 'date-fns'
-
 const DEFAULT_DATE = ''
 const DEFAULT_TIME = '00:00:00'
 const DEFAULT_DATE_FORMAT = 'yyyy-MM-dd'
-const DEFAULT_TIME_FORMAT = 'HH:mm:ss'
+const DEFAULT_TIME_FORMAT = 'hh:mm:ss'
 const DEFAULT_DIALOG_WIDTH = 380
 const DEFAULT_CLEAR_TEXT = '清除'
 const DEFAULT_OK_TEXT = '确认'
@@ -181,7 +179,7 @@ export default {
       return DEFAULT_DATE_FORMAT + ' ' + DEFAULT_TIME_FORMAT
     },
     formattedDatetime() {
-      return this.selectedDatetime ? format(this.selectedDatetime, this.dateTimeFormat) : ''
+      return this.selectedDatetime ? new Date(this.selectedDatetime).format(this.dateTimeFormat) : ''
     },
     selectedDatetime() {
       if (this.date && this.time) {
@@ -189,7 +187,7 @@ export default {
         if (this.time.length === 5) {
           datetimeString += ':00'
         }
-        return parse(datetimeString, this.defaultDateTimeFormat, new Date())
+        return new Date(datetimeString)
       } else {
         return null
       }

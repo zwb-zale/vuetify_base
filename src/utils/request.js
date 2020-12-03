@@ -1,6 +1,5 @@
 import axios from "axios";
 import store from "../store";
-import Message from "@/components/Message/index.js";
 // 创建axios实例
 const service = axios.create({
   baseURL: process.env.BASE_API, // api 的 base_url

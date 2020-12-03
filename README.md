@@ -1,5 +1,21 @@
 # companyui
 
+#element-ui框架修改，暴露Scrollbar组件：
+```
+element-ui/types 下新增scrollbar.d.ts文件，内容
+------------------------
+import {VNodeDirective} from 'vue';
+
+export interface ElScrollbar extends VNodeDirective {
+    name: 'scrollbar',
+    value: Function
+}
+--------------------------
+然后在element-ui.d.ts的文件当中引入
+import { ElScrollbar } from './scrollbar'
+export const Scrollbar : PluginObject<ElScrollbar>
+```
+
 #不能用cnpm安装，否则不兼容EDGE浏览器
 
 ## Project setup

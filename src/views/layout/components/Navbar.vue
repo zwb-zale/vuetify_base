@@ -7,7 +7,7 @@
     dark
     :width="190"
   >
-    <vuescroll :ops="ops">
+    <el-scrollbar style="height: 100%">
       <v-list expand>
       <template v-for="(item, i) in permission_routers">
         <item-group
@@ -23,22 +23,19 @@
         ></base-item>
       </template>
     </v-list>
-    </vuescroll>
-
+    </el-scrollbar>
 
   </v-navigation-drawer>
 </template>
 
 <script>
-import vuescroll from 'vuescroll';
 import { mapGetters } from "vuex";
 import ItemGroup from "@/components/base/ItemGroup";
 import BaseItem from "@/components/base/Item";
 export default {
   components: {
     ItemGroup,
-    BaseItem,
-    vuescroll
+    BaseItem
   },
   computed: {
     ...mapGetters(["permission_routers"])
@@ -71,10 +68,28 @@ export default {
 </script>
 
 <style scoped>
-div>>>.__view{
-  min-height: 0 !important;
+/*vuescroll样式*/
+/*div>>>.__view{*/
+/*  min-height: 0 !important;*/
+/*}*/
+/*div>>>.__bar-wrap-is-vertical{*/
+/*  border-radius: 0 !important;*/
+/*}*/
+div>>>.el-scrollbar__wrap{
+  overflow-x: hidden;
 }
-div>>>.__bar-wrap-is-vertical{
-  border-radius: 0 !important;
+div>>>.is-horizontal{
+  height: 0;
+  display: none;
+}
+div>>>.el-scrollbar__bar.is-vertical{
+  width: 4px;
+}
+div>>>.el-scrollbar__bar{
+  right: 0;
+  border-radius:0
+}
+div>>>.el-scrollbar__thumb{
+  background-color: rgba(144,147,153,1);
 }
 </style>

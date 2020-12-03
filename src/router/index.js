@@ -6,7 +6,15 @@ import { mapState } from "vuex";
 // detail: https://panjiachen.github.io/vue-element-admin-site/#/lazy-loading
 
 Vue.use(Router);
-
+// 解决面包屑导航中，vue-router在3.0版本以上重复点菜单报错问题
+const originalReplace = Router.prototype.replace;
+const originalPush = Router.prototype.push
+Router.prototype.replace = function replace(location) {
+    return originalReplace.call(this, location).catch(err => err);
+};
+Router.prototype.push = function push(location) {
+  return originalPush.call(this, location).catch(err => err)
+}
 /* Layout */
 import Layout from "@/views/layout/Layout";
 

@@ -13,6 +13,7 @@
         </v-col>
 
         <v-col cols="12" md="4">
+<!--          <div id="myChart" style="width: 100%;height: 100%"></div>-->
           <v-skeleton-loader
             v-bind="attrs"
             type="table-heading, list-item-two-line, image, table-tfoot"
@@ -42,7 +43,6 @@
 </template>
 
 <script>
-
 export default {
   name: "home",
   data() {
@@ -53,7 +53,7 @@ export default {
         elevation: 2
       },
     }
-  }
+  },
 };
 </script>
 

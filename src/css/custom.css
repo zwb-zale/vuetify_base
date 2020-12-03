@@ -66,18 +66,18 @@ html {
   align-items: center;
   justify-content: flex-end;
 }
-/*::-webkit-scrollbar {*/
-/*    width: 5px;*/
-/*    height: 10px;*/
-/*  }*/
+::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+  }
 
-/*::-webkit-scrollbar-thumb {*/
-/*    background-color: rgba(144, 147, 153, .7);*/
-/*  }*/
-/*::-webkit-scrollbar-track {*/
-/*  background: #ffffff;*/
+::-webkit-scrollbar-thumb {
+    background-color: rgba(144, 147, 153, .7);
+  }
+::-webkit-scrollbar-track {
+  background: #ffffff;
 
-/*}*/
+}
 .smallIcon{
   font-size: 18px !important;
 }

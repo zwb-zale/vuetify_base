@@ -58,6 +58,7 @@
                 dark
                 small
                 color="primary"
+                @click="testNotify"
             >
               <v-icon dark>
                 search
@@ -313,6 +314,13 @@ export default {
     }
   },
   methods: {
+    testNotify(){
+      this.$notify({
+          title: '提示',
+          message: '这是一条不会自动关闭的消息',
+          duration: 0
+        });
+    },
     del_safefile() {
       this.$message.success({
         duration: 2000,

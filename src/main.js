@@ -7,11 +7,13 @@ import router from "./router";
 import store from "./store";
 import i18n from "./lang";
 import "./utils/permission";
-import Message from "./components/Message/index.js";
 import "@/css/custom.css";
 import vuetify from "./plugins/vuetify";
+import { Notification, Scrollbar} from 'element-ui';
+Vue.prototype.$notify = Notification;
+Vue.use(Scrollbar);
+
 Vue.config.productionTip = false;
-Vue.prototype.$message = Message;
 const vm = new Vue({
   router,
   i18n,
