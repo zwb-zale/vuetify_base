@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "postinstall": "patch-package"
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -13,9 +14,11 @@
     "element-ui": "^2.14.1",
     "js-cookie": "^2.2.1",
     "nprogress": "^0.2.0",
+    "video.js": "^7.10.2",
     "vue": "^2.6.11",
     "vue-i18n": "^8.22.2",
     "vue-router": "^3.2.0",
+    "vue-video-player": "^5.0.2",
     "vuetify": "^2.3.18",
     "vuex": "^3.4.0"
   },
@@ -36,6 +39,7 @@
     "less": "^3.12.2",
     "less-loader": "^7.1.0",
     "material-design-icons-iconfont": "^v6.1.0",
+    "patch-package": "^6.4.7",
     "prettier": "^1.19.1",
     "sass": "^1.19.0",
     "sass-loader": "^8.0.0",

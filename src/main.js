@@ -10,6 +10,10 @@ import "./utils/permission";
 import "@/css/custom.css";
 import vuetify from "./plugins/vuetify";
 import { Notification, Scrollbar} from 'element-ui';
+import Video from 'video.js'
+import 'video.js/dist/video-js.css'
+
+Vue.prototype.$video = Video //引入Video播放器
 Vue.prototype.$notify = Notification;
 Vue.use(Scrollbar);
 

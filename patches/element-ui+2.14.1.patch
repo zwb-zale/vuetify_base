@@ -1,0 +1,26 @@
+diff --git a/node_modules/element-ui/types/element-ui.d.ts b/node_modules/element-ui/types/element-ui.d.ts
+index ea819db..cb672ad 100644
+--- a/node_modules/element-ui/types/element-ui.d.ts
++++ b/node_modules/element-ui/types/element-ui.d.ts
+@@ -80,6 +80,8 @@ import { ElPageHeader } from './page-header'
+ import { ElAvatar } from './avatar'
+ import { ElDrawer } from './drawer'
+ import { ElPopconfirm } from './popconfirm'
++import { ElScrollbar } from './scrollbar'
++export const Scrollbar : PluginObject<ElScrollbar>
+ 
+ export interface InstallationOptions {
+   locale: any,
+diff --git a/node_modules/element-ui/types/scrollbar.d.ts b/node_modules/element-ui/types/scrollbar.d.ts
+new file mode 100644
+index 0000000..64d498d
+--- /dev/null
++++ b/node_modules/element-ui/types/scrollbar.d.ts
+@@ -0,0 +1,6 @@
++import {VNodeDirective} from 'vue';
++
++export interface ElScrollbar extends VNodeDirective {
++    name: 'scrollbar',
++    value: Function
++}
+\ No newline at end of file

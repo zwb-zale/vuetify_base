@@ -1,6 +1,6 @@
 # companyui
 
-#element-ui框架修改，暴露Scrollbar组件：
+#element-ui框架修改，暴露Scrollbar组件（已用patch-package修改，不需要手动添加）：
 ```
 element-ui/types 下新增scrollbar.d.ts文件，内容
 ------------------------
