@@ -9,12 +9,13 @@ import i18n from "./lang";
 import "./utils/permission";
 import "@/css/custom.css";
 import vuetify from "./plugins/vuetify";
-import { Notification, Scrollbar} from 'element-ui';
+import { Notification, Scrollbar, Message} from 'element-ui';
 import Video from 'video.js'
 import 'video.js/dist/video-js.css'
 
 Vue.prototype.$video = Video //引入Video播放器
 Vue.prototype.$notify = Notification;
+Vue.prototype.$message = Message;
 Vue.use(Scrollbar);
 
 Vue.config.productionTip = false;

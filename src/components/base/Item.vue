@@ -1,6 +1,6 @@
 <template>
   <v-list-item
-    :class="[haveson ? 'px-8' : 'px-3']"
+    :class="[no_father_node ? 'px-8' : 'px-3']"
     exact
     :to="`${base_path}/${item.path}`"
     color="#409eff"
@@ -27,7 +27,7 @@ export default {
   mixins: [Themeable],
 
   props: {
-    haveson: {
+    no_father_node: {
       type: Boolean,
       default: true
     },

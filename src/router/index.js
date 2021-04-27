@@ -19,10 +19,6 @@ Router.prototype.push = function push(location) {
 import Layout from "@/views/layout/Layout";
 
 /**
- * hidden: true                              if `hidden:true` will not show in the sidebar(default is false)
- * alwaysShow: true                          if set true, will always show the root menu, whatever its child routes length
- *                                           if not set alwaysShow, only more than one route under the children
- *                                           it will becomes nested mode, otherwise not show the root menu
  * redirect: noredirect                      if `redirect:noredirect` will no redirect in the breadcrumb
  * name:'router-name'                        the name is used by <keep-alive> (must set!!!)
  * meta : {
@@ -35,7 +31,6 @@ export const constantRouterMap = [
   {
     path: "/404",
     component: () => import("@/views/404"),
-    hidden: true,
     meta: {
       title: "",
       icon: ""
@@ -45,7 +40,7 @@ export const constantRouterMap = [
 export const homeRoute = {
   path: "",
   component: Layout,
-  haveson: true,
+  no_father_node: true,
   children: [
     {
       path: "home",
@@ -63,7 +58,6 @@ export const asyncRouterMap = [
   {
     path: "/data-manage",
     component: Layout,
-    alwaysShow: false,
     name: "DataManage",
     meta: {
       title: "dataManage",
@@ -87,7 +81,6 @@ export const asyncRouterMap = [
   {
     path: "/othermng",
     component: Layout,
-    alwaysShow: false,
     name: "othermng",
     meta: {
       title: "othermng",
@@ -110,7 +103,6 @@ export const asyncRouterMap = [
   {
     path: "/righ-tmanage",
     component: Layout,
-    alwaysShow: false,
     name: "RightManage",
     meta: {
       title: "rightManage",

@@ -11,13 +11,13 @@
       <v-list expand>
       <template v-for="(item, i) in permission_routers">
         <item-group
-          v-if="item.children && !item.haveson"
+          v-if="item.children && !item.no_father_node"
           :key="`group-${i}`"
           :item="item"
         ></item-group>
         <base-item
           v-else
-          :haveson="false"
+          :no_father_node="false"
           :key="`item-${i}`"
           :item="item.children[0]"
         ></base-item>

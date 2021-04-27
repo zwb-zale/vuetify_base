@@ -34,7 +34,6 @@
           goTag({ path: tag.path, query: tag.query, fullPath: tag.fullPath })
         "
           :height="26"
-          :max-width="110"
           :color="isActive(tag) ? 'success' : '#ffffff'"
           v-for="(tag, index) in visitedViews"
           depressed
