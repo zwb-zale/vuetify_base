@@ -6,6 +6,10 @@
 2.没有折叠菜单的页面，按1添加路由后，将path（与children平级）的值设为空，添加no_father_node属性，值为true
 
 如果不需要home页面，即homeRoute，可以在store/modules/permission.js中删除91行    newRoute.unshift(homeRoute);
+
+页面根元素用添加样式class="appBox"，区域刚刚好是空白区域
+
+参考 onePage页面
 ```
 #element-ui框架修改，暴露Scrollbar组件（已用patch-package修改，不需要手动添加）：
 ```

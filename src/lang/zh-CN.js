@@ -68,6 +68,7 @@ export default {
     roleRights: "角色权限",
     changePassword: "修改密码",
     dataManage: "资料管理",
+    OnePage:'无菜单页面',
     accreditManage: "授权管理",
     companyInformation: "公司信息",
     employee: "员工信息",

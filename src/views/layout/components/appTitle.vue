@@ -8,7 +8,7 @@
     style="background-image: linear-gradient(-135deg,#34a2b0,#2668b4);color: #ffffff"
   >
     <div class="yjuzhong-1 apptitlelr_box">
-      <img src="@/assets/logomini.png" style="width: 50px;height: 45px" />
+      <img src="@/assets/logomini.png" class="rounded-lg" style="width: 50px;height: 45px" />
       <div class="BUTTON pl-2">MAXWIN</div>
     </div>
     <v-spacer></v-spacer>
