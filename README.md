@@ -5,6 +5,8 @@
 1.有折叠菜单的页面，在路由的asyncRouterMap对象中参照CompanyInformation进行添加
 2.没有折叠菜单的页面，按1添加路由后，将path（与children平级）的值设为空，添加no_father_node属性，值为true
 
+路由里的keepAlive为true时，页面的name与meta平级的name一致
+
 如果不需要home页面，即homeRoute，可以在store/modules/permission.js中删除91行    newRoute.unshift(homeRoute);
 
 页面根元素用添加样式class="appBox"，区域刚刚好是空白区域

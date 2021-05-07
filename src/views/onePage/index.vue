@@ -36,7 +36,7 @@
 
 <script>
 export default {
-name: "index"
+name: "OnePage"
 }
 </script>
 

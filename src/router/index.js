@@ -23,6 +23,7 @@ import Layout from "@/views/layout/Layout";
  * name:'router-name'                        the name is used by <keep-alive> (must set!!!)
  * meta : {
     title: 'title'                          the name show in submenu and breadcrumb (recommend set)
+    keepAlive: true                         keepAlive为true时，页面的name与  name:'router-name'  要一致
     icon: 'svg-name'                        the icon show in the sidebar,
     permissions： ['permission-name']       the permissions required for this route(如果不存在permissions属性，或者该属性为空列表，表示无权限限制)
   }
@@ -71,7 +72,7 @@ export const asyncRouterMap = [
                 component: () =>
                     import("@/views/onePage/index.vue"),
                 meta: {
-                    keepAlive: false,
+                    keepAlive: true,
                     title: "OnePage",
                     icon: "account_balance",
                     permissions: ["company"]
